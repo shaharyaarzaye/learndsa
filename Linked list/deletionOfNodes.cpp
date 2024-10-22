@@ -30,16 +30,64 @@ void insertNode(int n) {
 }
 
 void printList(){
-    int len =0;
    struct node* temp = head; // Initialize temp with head
     while (temp != nullptr) { // Iterate until temp is nullptr
         printf("%d ", temp->data); // Print data
         printf("%d ", &temp->data); // Print the address of the memory
         temp = temp->link; // Move to the next node
-        len++;
     }
     printf("\n"); // Print newline after the list
-    printf("The Length of the list is : %d" , len );
+
+}
+
+void deleteFirstNode(){
+    struct node *temp;
+    temp = head;
+    if(head == 0){
+        printf("No element in the list to be deleted");
+    }
+    head = temp->link;
+    free(temp);
+    printList();
+}
+void deleteLastNode(){
+    struct node *temp;
+    struct node *prev;
+    prev = head;
+    temp = head;
+    if(head == 0){
+        printf("There is no element in the list to be deleted");
+    }
+    while(temp->link != 0){
+        temp = temp->link;
+    }
+    while(prev->link != temp){
+        prev = prev->link ;
+    }
+    prev->link = 0;
+    free(temp);
+    printList();
+}
+
+void deleteAtPosition(int pos){
+    struct node * temp , *prev , * next;
+    temp = head;
+    prev = head;
+    int count= 1;
+    while(count < pos){
+        temp = temp->link;
+        count++;
+    }
+    while (prev->link != temp)
+    {
+        prev = prev->link;
+    }
+    next = temp->link;
+    prev->link = next;
+    free(temp);
+    printList();
+
+    
 }
 
 int main() {
@@ -53,6 +101,10 @@ int main() {
         scanf("%d", &choice);
     }
     printList();
+    // deleteFirstNode(); // to Delete the first node
+    // deleteLastNode(); // to Delete the Last Node
+   // deleteAtPosition(3); // to Delete the Not at any position 1 based indexing
+    
 
     return 0;
 }

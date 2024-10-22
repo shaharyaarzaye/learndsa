@@ -40,7 +40,23 @@ void printList(){
     }
     printf("\n"); // Print newline after the list
     printf("The Length of the list is : %d" , len );
+     printf("\n");
 }
+
+void reverseList(){
+    struct node *prev , *curr , *next ;
+    curr = next = head;
+    prev = 0;
+    while(next != 0){
+        next = next->link;
+        curr->link = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+    printList();
+}
+
 
 int main() {
     int choice = 1;
@@ -52,7 +68,9 @@ int main() {
         printf("If you want to stop adding press 0, otherwise press any other number: ");
         scanf("%d", &choice);
     }
-    printList();
-
+    printf("This is the list you want to print : ");
+    printList(); 
+    printf("This is the reversed list : ");
+    reverseList();
     return 0;
 }
