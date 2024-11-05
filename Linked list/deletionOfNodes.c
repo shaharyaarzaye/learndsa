@@ -7,16 +7,16 @@ struct node {
     struct node* link;
 };
 
-struct node* head = nullptr; // Initialize head to nullptr
+struct node* head = 0; // Initialize head to nullptr
 struct node* newNode;
 
 void insertNode(int n) {
     newNode = (struct node*)malloc(sizeof(struct node));
     struct node* temp;
     newNode->data = n;
-    newNode->link = nullptr;
+    newNode->link = 0;
     
-    if (head == nullptr) { // Check if head is null
+    if (head == 0) { // Check if head is null
         head = newNode;
     } 
     else{
@@ -31,7 +31,7 @@ void insertNode(int n) {
 
 void printList(){
    struct node* temp = head; // Initialize temp with head
-    while (temp != nullptr) { // Iterate until temp is nullptr
+    while (temp != 0) { // Iterate until temp is nullptr
         printf("%d ", temp->data); // Print data
         printf("%d ", &temp->data); // Print the address of the memory
         temp = temp->link; // Move to the next node
