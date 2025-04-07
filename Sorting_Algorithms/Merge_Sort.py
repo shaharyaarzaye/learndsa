@@ -47,6 +47,6 @@ def merge(arr, s, m, e):
         j += 1
         k += 1
 
-arr = [ 5 ,2 ,4, 2, 5, 3]     
+arr = [5 ,2 ,4, 2, 5, 3]     
 mergeSort(arr , 0 , len(arr)-1)   
 print(arr)
